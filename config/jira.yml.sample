@@ -1,0 +1,6 @@
+jira_url: 'https://your.jira.server/rest/api/2'
+agile_url: 'https://your.jira.server/rest/greenhopper/1.0'
+username: 'yourloginforjira'
+password: 'yourpasswordforjira'
+rapidview: 1
+project: PRJ

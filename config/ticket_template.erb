@@ -1,0 +1,16 @@
+
+https://ticket.opower.com/browse/\e[1m<%=ref%>\e[0m
+  \e[1m<%=summary%>\e[0m
+<% if assignee.nil? %>
+  Assignee: \e[1mUnassigned\e[0m\tReported by: \e[1m<%=reporter['displayName']%>\e[0m
+<% else %>
+  Assignee: \e[1m<%=assignee['displayName']%>\e[0m\tReported by: \e[1m<%=reporter['displayName']%>\e[0m
+<% end %>
+  Priority: \e[1m<%=priority['name']%>\e[0m\tStatus: \e[1m<%=status['name']%>\e[0m
+
+<%=description%>
+
+<% comment['comments'].each do |c| %>
+\e[1m<%=c['author']['displayName']%>\e[0m: <%=c['body']%>
+<% end %>
+

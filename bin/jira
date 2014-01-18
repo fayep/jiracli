@@ -1,0 +1,28 @@
+#!/usr/bin/env ruby
+
+require 'thor'
+
+# Set up the load path so we can load things from our own lib
+$LOAD_PATH << File.expand_path('../../lib', __FILE__)
+
+require 'jira'
+
+# Skeleton CLI class
+class JiraCLI < Thor
+end
+
+#
+# Load all commands
+#
+
+Jira.before_command_load
+
+cmd_root = '../../lib/commands/*'
+Dir[File.expand_path(cmd_root, __FILE__)].each do |cmd|
+  require cmd
+end
+
+Jira.after_command_load
+
+# Janky way of avoiding starting the CLI if we're running under rspec.
+JiraCLI.start unless $PROGRAM_NAME =~ /rspec/
