@@ -1,0 +1,4 @@
+# vim: ft=ruby
+MetricFu::Configuration.run do |config|
+  config.cane[:line_length] = 132
+end
