@@ -11,6 +11,8 @@ require 'jira/agile'
 module Jira
   # Callback invoked before the CLI loads all its command modules.
   def self.before_command_load
+    Wrest.logger = Logger.new(STDERR)
+    Wrest.logger.level = Logger::INFO
   end
 
   # Callback invoked after the CLI loads all its command modules.

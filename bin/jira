@@ -6,6 +6,7 @@ require 'thor'
 $LOAD_PATH << File.expand_path('../../lib', __FILE__)
 
 require 'jira'
+require 'erubis'
 
 # Skeleton CLI class
 class JiraCLI < Thor
