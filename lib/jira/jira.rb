@@ -19,6 +19,11 @@ module Jira
       @@instance.get
     end
 
+    def refresh
+      @fields = nil
+      get
+    end
+
     def get
       # get all the fields.
       @fields ||= base_url['/field'].get.deserialize
@@ -33,8 +38,48 @@ module Jira
       @issues={}
     end
 
-    def get(params)
+    def refresh(params=nil)
+      params ||= @lastparamsused
+      @issues[params.hash] = nil
+      @lastparamsused = params
+      get
+    end
+
+    def get(params=nil)
+      # make the [] function work on the latest result set
+      params ||= @lastparamsused
+      @lastparamsused = params
       @issues[params.hash] ||= base_url['/search'].get(params).deserialize['issues']
+    end
+
+    def uri_for(issue)
+      case
+      when issue.kind_of?(Hash)
+        issueurl = nil
+        result = nil
+        case
+	when issue.has_key?('self')
+          issueurl=issue['self']
+        when issue.has_key?('key')
+          result = self[issue]
+        end
+      when issue.kind_of?(String)
+        issue = {'key'=>issue}
+        result = self[issue]
+      end
+      if issueurl.nil?
+        if result.nil? || result.empty?
+          issueurl=get(issue).first['self']
+        else
+          issueurl=result['self']
+        end
+      end
+      issueurl.slice! base_url.to_s
+      issueurl
+    end
+
+    def put(issue,updates)
+      base_url[uri_for(issue)].put(updates.to_json,{'Content-Type'=>'application/json'})
     end
 
   end

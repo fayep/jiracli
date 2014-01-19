@@ -6,10 +6,6 @@ describe Jira::Sprints do
     @sprints = Jira::Sprints.new
   end
 
-  it "must work" do
-    "Yay".should be_instance_of String
-  end
-
   it "should return an instance of Jira::Sprints" do
     @sprints.should be_instance_of Jira::Sprints
   end
@@ -30,7 +26,6 @@ describe Jira::Sprints do
     @issues = Jira::Issues.new
     issuesinsprint = {:jql=>"sprint='#{@sprints.active['name']}' AND assignee='#{Jira::Config.username}'",:maxResults=>1}
     testissue=@issues.get(issuesinsprint).first['key']
-    puts "%s into %s" % [testissue, @sprints.active['id']]
     @sprints.addIssuesToSprint(@sprints.active['id'].to_i, [testissue])
   end
 
