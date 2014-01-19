@@ -59,7 +59,7 @@ module Jira
         result = nil
         case
 	when issue.has_key?('self')
-          issueurl=issue['self']
+          issueurl=issue['self'].dup
         when issue.has_key?('key')
           result = self[issue]
         end

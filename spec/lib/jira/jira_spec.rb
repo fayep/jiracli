@@ -60,4 +60,15 @@ describe Jira::Issues do
     @issues.put(issue,updates)
   end
 
+  it "should return a different result object if refreshed" do
+    quicktest={:jql=>"project='#{Jira::Config.project}'", :fields=>'summary', :maxResults=>2}
+    r1=@issues.refresh(quicktest)
+    r2=@issues.refresh
+    r3=@issues.get
+    r1.should eql r2
+    r1.should_not equal r2
+    r2.should equal r3
+    r3.should eql r1
+  end
+
 end
