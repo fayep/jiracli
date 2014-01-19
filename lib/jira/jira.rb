@@ -19,11 +19,6 @@ module Jira
       @@instance.get
     end
 
-    def refresh
-      @fields = nil
-      get
-    end
-
     def get
       # get all the fields.
       @fields ||= base_url['/field'].get.deserialize
@@ -69,9 +64,9 @@ module Jira
       end
       if issueurl.nil?
         if result.nil? || result.empty?
-          issueurl=get(issue).first['self']
+          issueurl=get(issue).first['self'].dup
         else
-          issueurl=result['self']
+          issueurl=result['self'].dup
         end
       end
       issueurl.slice! base_url.to_s
