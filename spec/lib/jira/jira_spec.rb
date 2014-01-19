@@ -51,6 +51,10 @@ describe Jira::Issues do
     uri.should include(issue['id'].to_s)
     @issues.uri_for('key'=>issue['key']).should eql(uri)
     @issues.uri_for(issue['key']).should eql(uri)
+    othertest={:jql=>"project != '#{Jira::Config.project}'", :fields=>'summary', :maxResults=>2}
+    # make sure our current test doesn't contain our test issue
+    @issues.get(othertest)
+    @issues.uri_for(issue['key']).should eql(uri)
   end
 
   it "should assign your ticket back to you" do

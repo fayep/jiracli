@@ -53,7 +53,7 @@ module Jira
         issueurl = nil
         result = nil
         case
-	when issue.has_key?('self')
+        when issue.has_key?('self')
           issueurl=issue['self'].dup
         when issue.has_key?('key')
           result = self[issue]
@@ -64,7 +64,7 @@ module Jira
       end
       if issueurl.nil?
         if result.nil? || result.empty?
-          issueurl=get(issue).first['self'].dup
+          issueurl=get({:jql=>"key = '#{issue['key']}'", :fields=>'summary'}).first['self'].dup
         else
           issueurl=result['self'].dup
         end
