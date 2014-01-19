@@ -4,10 +4,10 @@
 require File.expand_path('../lib/version', __FILE__)
 
 Gem::Specification.new do |gem|
-  gem.authors       = ["SET ME"]
-  gem.email         = ["SET ME"]
-  gem.description   = %q{I am an application stub}
-  gem.summary       = %q{app stub}
+  gem.authors       = ["Faye Salwin"]
+  gem.email         = ["faye.salwin@opower.com"]
+  gem.description   = %q{command line utility for JIRAs REST API.}
+  gem.summary       = %q{Allows you to perform serveral useful ticket operations from the command line.}
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }

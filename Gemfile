@@ -3,10 +3,8 @@ source 'http://gemserver.va.opower.it'
 gemspec
 
 gem 'wrest'
+gem 'erubis'
 
 group :test do
-  gem 'webmock'
-  gem 'vcr'
-  gem 'turn'
   gem 'rake'
 end
