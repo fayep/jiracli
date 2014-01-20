@@ -3,7 +3,7 @@ class JiraCLI < Thor
   def work(ticket)
     @issues = Jira::Issues.new
     @sprint = Jira::Sprints.new
-    sprintid=@sprint.current['id'].to_i
-    @issues.addIssuesToSprint(sprintid, [ticket])
+    sprintid=@sprint.active['id'].to_i
+    @sprint.addIssuesToSprint(sprintid, [ticket])
   end
 end
