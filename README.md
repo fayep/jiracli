@@ -1,24 +1,26 @@
 # Jira
 
-TODO: Write a gem description
+A command line for accessing Jira
 
 ## Installation
 
-Add this line to your application's Gemfile:
+    rake check_config
 
-    gem 'jira'
+    vi config/jira.yml
 
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install jira
+    rake install
 
 ## Usage
 
-TODO: Write usage instructions here
+    jira comment TICKET    # comment on a named ticket
+    jira feature [TICKET]  # list feature tickets
+    jira help [TASK]       # Describe available tasks or one specific task
+    jira list              # show your tickets
+    jira show              # show a named ticket
+    jira unassigned        # show unassigned tickets
+    jira version           # show jira version
+    jira work TICKET       # work on a named ticket
+
 
 ## Contributing
 
