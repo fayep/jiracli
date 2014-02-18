@@ -12,14 +12,18 @@ A command line for accessing Jira
 
 ## Usage
 
-    jira comment TICKET    # comment on a named ticket
-    jira feature [TICKET]  # list feature tickets
-    jira help [TASK]       # Describe available tasks or one specific task
-    jira list              # show your tickets
-    jira show              # show a named ticket
-    jira unassigned        # show unassigned tickets
-    jira version           # show jira version
-    jira work TICKET       # work on a named ticket
+    jira comment TICKET
+Adds a comment to the ticket you specify by TICKET
+    jira feature [TICKET]
+List feature tickets
+    jira list
+Show your tickets
+    jira show [--raw]
+Show a ticket using your template (from config), or the raw JSON
+    jira unassigned
+Show unassigned tickets (Great for on-call)
+    jira work TICKET
+Work on a named ticket (Bring it into the current sprint)
 
 
 ## Contributing
