@@ -5,10 +5,15 @@ A command line for accessing Jira
 ## Installation
 
     rake check_config
+    vi config/jira.yml
+    rake install
+    jira...
+
+You may want to bundle instead:
 
     vi config/jira.yml
-
-    rake install
+    bundle install
+    bundle exec jira...
 
 ## Usage
 
@@ -29,6 +34,12 @@ Show unassigned tickets (Great for on-call)
 
     jira work TICKET
 Work on a named ticket (Bring it into the current sprint)
+
+## Troubleshooting
+
+If you get a certificate error, it's likely that the URLS are incorrect or you don't have a valid certificate on your server.  If you edited your configuration make sure that you reinstall.
+
+Please report any gems which I have missed out and which cause you errors when running.
 
 
 ## Contributing
