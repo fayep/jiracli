@@ -9,7 +9,7 @@ Gem::Specification.new do |gem|
   gem.description   = %q{command line utility for JIRAs REST API.}
   gem.summary       = %q{Allows you to perform serveral useful ticket operations from the command line.}
 
-  gem.files         = `git ls-files`.split($\)
+  gem.files         = `git ls-files`.split($\)+['config/jira.yml']
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.name          = "jira"

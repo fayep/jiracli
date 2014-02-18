@@ -1,12 +1,11 @@
 class JiraCLI < Thor
-  desc 'feature', 'list feature tickets\n[--id=FEATUREID] list tickets in feature'
-  method_option :id, :required => false, :aliases => '-i'
-  def feature
+  desc 'feature [TICKET]', 'list feature tickets'
+  def feature(id="")
     @issues = Jira::Issues.new
-    if options[:id] == ""
+    if id == ""
       issuelist={:jql=>"project='#{Jira::Config.project}' AND issuetype='feature' AND status='open'", :fields=>'summary',:maxResults=>100}
     else
-      issuelist={:jql=>"'Feature Link'='#{options[:id]}' AND status='open'", :fields=>'summary',:maxResults=>100}
+      issuelist={:jql=>"'Feature Link'='#{id}' AND status='open'", :fields=>'summary',:maxResults=>100}
     end
     @issues.get(issuelist).map{|i|
 	puts "%s: %s" % [ i['key'], i['fields']['summary'] ]

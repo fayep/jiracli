@@ -1,5 +1,5 @@
 class JiraCLI < Thor
-  desc 'work', 'work on a named ticket'
+  desc 'work TICKET', 'work on a named ticket'
   def work(ticket)
     @issues = Jira::Issues.new
     @sprint = Jira::Sprints.new

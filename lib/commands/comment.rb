@@ -1,5 +1,5 @@
 class JiraCLI < Thor
-  desc 'comment', 'comment on a named ticket'
+  desc 'comment TICKET', 'comment on a named ticket'
   def comment(ticket, comment)
     @issues=Jira::Issues.new
     issuequery={:jql=>"key='#{ticket}'", :fields=>'summary', :maxResults=>2}
