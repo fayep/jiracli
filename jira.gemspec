@@ -20,6 +20,8 @@ Gem::Specification.new do |gem|
   gem.add_dependency("thor", "0.15.3")
   gem.add_dependency("sysexits", "1.0.2")
   gem.add_dependency("awesome_print", "~> 1.1.0")
+  gem.add_dependency("wrest", "~> 1.5.0")
+  gem.add_dependency("erubis", "~> 2.7.0")
 
   # development dependencies.
   gem.add_development_dependency("rspec", "~> 2.13.0")
