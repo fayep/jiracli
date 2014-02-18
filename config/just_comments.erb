@@ -1,0 +1,4 @@
+<% comment['comments'].last(num_comments).each do |c| %>
+\e[31m<%= ref  %>\e[0m?focusedCommentId=\e[32m<%=  c['id'] %>\e[0m: \e[1m<%=c['author']['displayName']%>\e[0m: @ <%= c['created']%>
+    <%=c['body']%>
+<% end %>

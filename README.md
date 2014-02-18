@@ -26,8 +26,12 @@ List feature tickets
     jira list
 Show your tickets
 
-    jira show [--raw]
+    jira show [--raw] TICKET
 Show a ticket using your template (from config), or the raw JSON
+
+    jira lastcomment TICKET [--raw]
+    jira lastcomment TICKET num_comments [--raw]
+Show a ticket (1 or num_comments) using your template (from config), or the raw JSON
 
     jira unassigned
 Show unassigned tickets (Great for on-call)
