@@ -1,6 +1,6 @@
 class JiraCLI < Thor
   option :raw
-  desc 'lastcomments', 'show the last N comments in the named ticket'
+  desc 'lastcomments TICKET [NUMCOMMENTS]', 'show the last 1 (or NUMCOMMENTS) comments in TICKET'
   def lastcomments(ticket, num_comments=1)
     @issues = Jira::Issues.new
     issue={:jql=>"key='#{ticket}'", :fields=>'*all', :expand=>'names,metadata',:maxResults=>2}

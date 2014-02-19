@@ -1,6 +1,6 @@
 class JiraCLI < Thor
   option :raw
-  desc 'related', 'show keys of issues related to the named ticket'
+  desc 'related TICKET', 'show keys of issues related to TICKET'
   def related(ticket)
     @issues = Jira::Issues.new
     issue={:jql=>"key='#{ticket}'", :fields=>'*all', :expand=>'names,metadata',:maxResults=>2}
