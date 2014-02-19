@@ -29,15 +29,18 @@ Show your tickets
     jira show [--raw] TICKET
 Show a ticket using your template (from config), or the raw JSON
 
-    jira lastcomment TICKET [--raw]
-    jira lastcomment TICKET num_comments [--raw]
-Show a ticket (1 or num_comments) using your template (from config), or the raw JSON
-
     jira unassigned
 Show unassigned tickets (Great for on-call)
 
     jira work TICKET
 Work on a named ticket (Bring it into the current sprint)
+
+    jira lastcomment TICKET
+    jira lastcomment TICKET num_comments
+Show comments for a ticket (1 or num_comments)
+
+    jira related TICKET
+Show related issues for a ticket
 
 ## Troubleshooting
 

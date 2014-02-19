@@ -11,16 +11,12 @@ class JiraCLI < Thor
         j['comment']['comments'] = []
       end
       j['ref'] = i['key'];
-      j['url'] = i['self'];
-      if options[:raw]
-        puts j.to_json
-      else
-        template = eval('"%s"' % File.read(File.expand_path('../../../config/just_comments.erb',__FILE__)))
 
-        j['num_comments'] = num_comments.to_i
+      template = eval('"%s"' % File.read(File.expand_path('../../../config/just_comments.erb',__FILE__)))
 
-        puts Erubis::Eruby.new(template).result(j)
-      end
+      j['num_comments'] = num_comments.to_i
+
+      puts Erubis::Eruby.new(template).result(j)
     }
   end
 end

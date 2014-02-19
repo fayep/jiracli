@@ -1,0 +1,9 @@
+\e[31m<%= ref  %>\e[0m:
+<% issuelinks.each do |il| %>
+  <% unless il['outwardIssue'].nil? %>
+        <%= il['type']['outward']%> \e[1m<%= il['outwardIssue']['key'] %>\e[0m - <%= il['outwardIssue']['fields']['summary'] %>
+  <% end %>
+    <% unless il['inwardIssue'].nil? %>
+        <%= il['type']['inward']%> \e[1m<%= il['inwardIssue']['key'] %>\e[0m - <%= il['inwardIssue']['fields']['summary'] %>
+    <% end %>
+<% end %>
