@@ -1,6 +1,7 @@
 
 class JiraCLI < Thor
   option :raw
+  option :summary
   desc 'show', 'show a named ticket'
   def show(ticket)
     @issues = Jira::Issues.new
@@ -13,8 +14,11 @@ class JiraCLI < Thor
       end
       j['ref'] = i['key'];
       j['url'] = i['self'];
-      if options[:raw]
+      case
+      when options[:raw]
         puts j.to_json
+      when options[:summary]
+        puts "#{j['ref']}: #{j['summary']}"
       else
         template=eval('"%s"' % File.read(File.expand_path('../../../config/issue.erb',__FILE__)))
         puts Erubis::Eruby.new(template).result(j)
