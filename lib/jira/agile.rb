@@ -19,7 +19,8 @@ module Jira
     end
 
     def addIssuesToSprint(sprintId,issueList)
-      updates = {"idOrKeys"=>issueList,"customFieldId"=>Fields['name'=>'Rank']['customId'], "sprintId"=> sprintId, "addToBacklog"=>false}
+      updates = {"idOrKeys"=>issueList,"customFieldId"=>Fields['name'=>'Rank']['schema']['customId'], "sprintId"=> sprintId, "addToBacklog"=>false}
+      puts updates.to_json
       base_url['/sprint/rank'].put(updates.to_json,{'Content-Type'=>'application/json'})
     end
   end
